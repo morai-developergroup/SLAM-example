@@ -8,7 +8,7 @@ MODEL:
 VISUALIZE:
   ACTIVE_VIS: True
   FINAL_VIS: True
-  SAMPLE_VIS: False # ONLY turn on when you need to test a sample # sample size is 5 
+  SAMPLE_VIS: False # ONLY turn on when you need to take a test # sample size is 5 
 LIDAR:
   DUAL: False 
   NOISE: 0
