@@ -1,7 +1,7 @@
 import warnings
 import os
 
-from numpy import left_shift
+import numpy as np
 from tqdm import tqdm
 import open3d as o3d
 import argparse
@@ -24,34 +24,44 @@ if __name__=='__main__':
 
     print("len: ", len(pcs))
     align_pc = o3d.geometry.PointCloud()
-    if (cfg['VISUALIZE']["ACTIVE_VIS"]):
-        vis = o3d.visualization.Visualizer() 
-        vis.create_window('Mapping', visible = True) 
-
-    for i in tqdm(range(len(pcs))): #len(pcs)
-        print("Cloud file: ", pcs.lidar_list[i])
-        print("GPS file: ", poses.gps_list[i])
-        print("IMU file: ", poses.imu_list[i])
-        align_pc += pcs[i].transform(poses[i])
-        print("cloud points: ", len(align_pc.points))
-        if cfg['VISUALIZE']['ACTIVE_VIS']:
-            if i ==0:
-                vis.add_geometry(align_pc) 
-            vis.update_geometry(align_pc)
-            vis.poll_events()
-            vis.update_renderer()
-    
-    if (cfg['MODEL']['SAVE_MODEL']):
-        print("...................Saving 3D model.........................................")
-        os.makedirs(cfg['PATH']['SAVE'], exist_ok=True)
-        file_name = os.path.join(cfg['PATH']['SAVE'], cfg['MODEL']['MODEL_NAME'])
-        align_pc = align_pc.voxel_down_sample(voxel_size=cfg['MODEL']['VOXEL_SIZE'])
-        o3d.io.write_point_cloud(file_name, align_pc)
-        print("Done.")
-    
-    if (cfg['VISUALIZE']['FINAL_VIS']):
-        vis.destroy_window()
+    if (cfg['VISUALIZE']['SAMPLE_VIS']):
+        sample = np.random.choice(a=len(pcs), size = 5)
+        for i in tqdm(sample): #len(pcs)
+            print("Cloud file: ", pcs.lidar_list[i])
+            print("GPS file: ", poses.gps_list[i])
+            print("IMU file: ", poses.imu_list[i])
+            align_pc += pcs[i].transform(poses[i])
+            print("cloud points: ", len(align_pc.points))
         o3d.visualization.draw_geometries([align_pc])
+    else:
+        if (cfg['VISUALIZE']["ACTIVE_VIS"]):
+            vis = o3d.visualization.Visualizer() 
+            vis.create_window('Mapping', visible = True) 
+
+        for i in tqdm(range(len(pcs))): #len(pcs)
+            print("Cloud file: ", pcs.lidar_list[i])
+            print("GPS file: ", poses.gps_list[i])
+            print("IMU file: ", poses.imu_list[i])
+            align_pc += pcs[i].transform(poses[i])
+            print("cloud points: ", len(align_pc.points))
+            if cfg['VISUALIZE']['ACTIVE_VIS']:
+                if i ==0:
+                    vis.add_geometry(align_pc) 
+                vis.update_geometry(align_pc)
+                vis.poll_events()
+                vis.update_renderer()
+        
+        if (cfg['MODEL']['SAVE_MODEL']):
+            print("...................Saving 3D model.........................................")
+            os.makedirs(cfg['PATH']['SAVE'], exist_ok=True)
+            file_name = os.path.join(cfg['PATH']['SAVE'], cfg['MODEL']['MODEL_NAME'])
+            align_pc = align_pc.voxel_down_sample(voxel_size=cfg['MODEL']['VOXEL_SIZE'])
+            o3d.io.write_point_cloud(file_name, align_pc)
+            print("Done.")
+        
+        if (cfg['VISUALIZE']['FINAL_VIS']):
+            vis.destroy_window()
+            o3d.visualization.draw_geometries([align_pc])
         
 
 

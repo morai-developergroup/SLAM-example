@@ -1,5 +1,5 @@
 PATH:
-  DATA: "D:/MoraiLauncher_Win (1)/MoraiLauncher_Win/MoraiLauncher_Win_Data/SaveFile/SensorData" #"D:/MoraiLauncher_Win/MoraiLauncher_Win/MoraiLauncher_Win_Data/SaveFile/SensorData"
+  DATA: "D:/devel/MoraiLauncher_Win/MoraiLauncher_Win/MoraiLauncher_Win_Data/SaveFile/SensorData"
   SAVE: "./models"
 MODEL:
   SAVE_MODEL: True
@@ -8,21 +8,19 @@ MODEL:
 VISUALIZE:
   ACTIVE_VIS: True
   FINAL_VIS: True
+  SAMPLE_VIS: False # ONLY turn on when you need to test a sample # sample size is 5 
 LIDAR:
-  DUAL: True
+  DUAL: False 
   NOISE: 0
   THRES: True
-  RANGE: [3, 70]
+  RANGE: [3, 70] # [min(m), max(m)]
 LIDAR1:
-  PATH: "LIDAR_1"
-  TRANSFORM: [1.3, 1, 1.6, -30, 0, 0] # [x, y, z, roll, pitch, yaw]
+  PATH: "LIDAR_2"
+  TRANSFORM: [0, 0, 2.5, 0, 0, 0] # [x, y, z, roll, pitch, yaw] #[m, m, m, deg, deg, deg]
 LIDAR2:
   PATH: "LIDAR_4"
-  TRANSFORM: [1.3, -1, 1.6, -330, 0, 0] # [x, y, z, roll, pitch, yaw]
+  TRANSFORM: [0, 0, 0, 0, 0, 0] # [x, y, z, roll, pitch, yaw] #[m, m, m, deg, deg, deg]
 IMU:
-  PATH: "IMU_3"
+  PATH: "IMU_1"
 GPS:
-  PATH: "GPS_2"
-
-
-# "D:/MoraiLauncher_Win (1)/MoraiLauncher_Win/MoraiLauncher_Win_Data/SaveFile/SensorData"
+  PATH: "GPS_3"

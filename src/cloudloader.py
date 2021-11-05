@@ -35,7 +35,7 @@ class cloudLoader:
             return self.bin2cloud(os.path.join(self.lidar1_path, self.lidar_list[index])).transform(self.lidar1_transform) \
                 + self.bin2cloud(os.path.join(self.lidar2_path, self.lidar_list[index])).transform(self.lidar2_transform)
         else:
-            return self.bin2cloud(os.path.join(self.lidar_path, self.lidar_list[index])).transform(self.lidar1_transform)
+            return self.bin2cloud(os.path.join(self.lidar_path, self.lidar_list[index])).transform(self.lidar_transform)
     
     def sort_func(self, file):
         return int(re.sub(r'[^0-9]', '', file))   
