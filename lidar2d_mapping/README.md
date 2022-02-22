@@ -49,8 +49,8 @@ roslaunch lidar2d_mapping map:=office
 ```
 #### Network Connect
 Edit -> Network Settings -> Publisher, Subscriber, Service -> ROS setting
-<p align="center"><img src="img/network_connect.jpg" width=200></p>
+<p align="center"><img src="img/network_connect.jpg" width=900></p>
 
 #### Sensor Connect
 Sensor -> Sensor Edit Mode -> 2D LiDAR Sensor Spawn -> Network Setting
-<p align="center"><img src="img/sensor_connect.jpg" width=100></p>
+<p align="center"><img src="img/sensor_connect.jpg" width=500></p>
