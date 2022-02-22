@@ -1,0 +1,14 @@
+<launch>
+
+    <arg name="map" default="city"/>
+    <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch"/>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find lidar2d_mapping)/rviz/$(arg map).rviz"/>
+    
+    <node name="tf_pub" pkg="lidar2d_mapping" type="tf_publisher.py"/>
+    <node name="mapping" pkg="lidar2d_mapping" type="grid_mapping.py" output="screen">
+        <rosparam command="load" file="$(find lidar2d_mapping)/config/$(arg map).yaml" />
+    </node>
+
+</launch>
+
