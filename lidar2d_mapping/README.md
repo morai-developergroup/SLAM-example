@@ -29,7 +29,7 @@ rviz -d city.rviz
 cd SLAM-example/lidar2d_mapping
 rviz -d office.rviz
 ```
-
+---
 ### On docker image:
 ```bash
 cd SLAM-example/lidar2d_mapping
