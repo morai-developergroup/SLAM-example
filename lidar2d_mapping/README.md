@@ -1,8 +1,4 @@
-# 3D LiDAR SLAM EXAMPLE
-
-This is a fork of the original [SC-LeGO-LOAM](https://github.com/irapkaist/SC-LeGO-LOAM).
-
-The original author deserves all the credits, we just use simple fine-tuning practices to make the code more efficient in MORAI SIM.
+# 2D LiDAR MAPPING EXAMPLE
 
 ## Docker install
 ```bash
