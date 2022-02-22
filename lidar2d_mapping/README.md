@@ -37,11 +37,11 @@ cd SLAM-example/lidar2d_mapping
 ```
 #### City map
 ```bash
-roslaunch lidar2d_mapping map:=city
+roslaunch lidar2d_mapping run.launch map:=city
 ```
 #### Office map
 ```bash
-roslaunch lidar2d_mapping map:=office
+roslaunch lidar2d_mapping run.launch map:=office
 ```
 #### Network Connect
 Edit -> Network Settings -> Publisher, Subscriber, Service -> ROS setting
