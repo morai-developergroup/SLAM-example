@@ -1,0 +1,4 @@
+[submodule "AD/morai-standard-ad-algorithm"]
+	path = AD/morai-standard-ad-algorithm
+	url = https://github.com/morai-developergroup/morai-standard-ad-algorithm.git
+	branch = robotics
